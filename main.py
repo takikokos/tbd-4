@@ -1,5 +1,5 @@
 from PySide2 import QtWidgets
-from mainwindow_ui import MainWindow_UI
+from ui.mainwindow_ui import MainWindow_UI
 import sys
 
 
