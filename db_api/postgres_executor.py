@@ -16,6 +16,7 @@ class PostgresExecutor:
       ''' 
       pass
 
+   @overload
    def __init__(self, connection_conf : dict, reuse_conn : bool = False) -> None:
       '''
          connection_conf : dict with params to postgres connecion
@@ -23,9 +24,14 @@ class PostgresExecutor:
          reuse_conn : boolean, indicates whether to keep connection or reconnect
          on every query. Raises error if couldn't connect at init time.
       ''' 
+      pass
+
+   def __init__(self, connection_conf, reuse_conn : bool = False) -> None:
       if type(connection_conf) == type(""):
          with open(connection_conf) as conf_file:
             connection_conf = dict(json.loads(conf_file.read()))
+      elif type(connection_conf) != type({}):
+         raise Exception("You can only pass str or dict as a connection_conf param")
       if "dbname" not in connection_conf\
          or "password" not in connection_conf\
          or "host" not in connection_conf\
