@@ -1,0 +1,6 @@
+{
+    "dbname" : "university", 
+    "user" : "postgres", 
+    "password" : "password", 
+    "host" : "localhost"
+}
