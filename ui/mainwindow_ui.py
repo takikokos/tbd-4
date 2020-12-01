@@ -17,7 +17,7 @@ class MainWindow_UI(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(1500, 700)
+        Form.resize(1000, 700)
         self.gridLayout = QGridLayout(Form)
         self.gridLayout.setObjectName(u"gridLayout")
         self.tabWidget = QTabWidget(Form)
@@ -31,6 +31,56 @@ class MainWindow_UI(object):
         self.tab.setObjectName(u"tab")
         self.verticalLayout_2 = QVBoxLayout(self.tab)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalSpacer_4 = QSpacerItem(20, 150, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer_4)
+
+        self.addRow_btn = QPushButton(self.tab)
+        self.addRow_btn.setObjectName(u"addRow_btn")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.addRow_btn.sizePolicy().hasHeightForWidth())
+        self.addRow_btn.setSizePolicy(sizePolicy1)
+        self.addRow_btn.setMinimumSize(QSize(0, 45))
+
+        self.verticalLayout_4.addWidget(self.addRow_btn)
+
+        self.verticalSpacer = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer)
+
+        self.updateRow_btn = QPushButton(self.tab)
+        self.updateRow_btn.setObjectName(u"updateRow_btn")
+        sizePolicy1.setHeightForWidth(self.updateRow_btn.sizePolicy().hasHeightForWidth())
+        self.updateRow_btn.setSizePolicy(sizePolicy1)
+        self.updateRow_btn.setMinimumSize(QSize(0, 45))
+
+        self.verticalLayout_4.addWidget(self.updateRow_btn)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer_2)
+
+        self.deleteRow_btn = QPushButton(self.tab)
+        self.deleteRow_btn.setObjectName(u"deleteRow_btn")
+        sizePolicy1.setHeightForWidth(self.deleteRow_btn.sizePolicy().hasHeightForWidth())
+        self.deleteRow_btn.setSizePolicy(sizePolicy1)
+        self.deleteRow_btn.setMinimumSize(QSize(0, 45))
+
+        self.verticalLayout_4.addWidget(self.deleteRow_btn)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 150, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer_3)
+
+
+        self.horizontalLayout_3.addLayout(self.verticalLayout_4)
+
         self.rawTableWidget = QTableWidget(self.tab)
         self.rawTableWidget.setObjectName(u"rawTableWidget")
         self.rawTableWidget.setMidLineWidth(0)
@@ -40,25 +90,28 @@ class MainWindow_UI(object):
         self.rawTableWidget.horizontalHeader().setDefaultSectionSize(135)
         self.rawTableWidget.verticalHeader().setDefaultSectionSize(30)
 
-        self.verticalLayout_2.addWidget(self.rawTableWidget)
+        self.horizontalLayout_3.addWidget(self.rawTableWidget)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.showSchedule_btn = QPushButton(self.tab)
         self.showSchedule_btn.setObjectName(u"showSchedule_btn")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.showSchedule_btn.sizePolicy().hasHeightForWidth())
-        self.showSchedule_btn.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.showSchedule_btn.sizePolicy().hasHeightForWidth())
+        self.showSchedule_btn.setSizePolicy(sizePolicy2)
         self.showSchedule_btn.setMinimumSize(QSize(0, 30))
 
         self.horizontalLayout.addWidget(self.showSchedule_btn)
 
         self.showEmployee_btn = QPushButton(self.tab)
         self.showEmployee_btn.setObjectName(u"showEmployee_btn")
-        sizePolicy1.setHeightForWidth(self.showEmployee_btn.sizePolicy().hasHeightForWidth())
-        self.showEmployee_btn.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.showEmployee_btn.sizePolicy().hasHeightForWidth())
+        self.showEmployee_btn.setSizePolicy(sizePolicy2)
         self.showEmployee_btn.setBaseSize(QSize(0, 0))
 
         self.horizontalLayout.addWidget(self.showEmployee_btn)
@@ -117,6 +170,9 @@ class MainWindow_UI(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"\u0423\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442", None))
+        self.addRow_btn.setText(QCoreApplication.translate("Form", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435", None))
+        self.updateRow_btn.setText(QCoreApplication.translate("Form", u"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435", None))
+        self.deleteRow_btn.setText(QCoreApplication.translate("Form", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0443", None))
         self.showSchedule_btn.setText(QCoreApplication.translate("Form", u"\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435", None))
         self.showEmployee_btn.setText(QCoreApplication.translate("Form", u"\u0420\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0438", None))
         self.showJob_btn.setText(QCoreApplication.translate("Form", u"\u0414\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u0438", None))
