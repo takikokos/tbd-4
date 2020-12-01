@@ -6,59 +6,153 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>764</width>
-    <height>556</height>
+    <width>695</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Университет</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>70</y>
-     <width>571</width>
-     <height>351</height>
-    </rect>
-   </property>
-   <property name="midLineWidth">
-    <number>0</number>
-   </property>
-   <property name="sizeAdjustPolicy">
-    <enum>QAbstractScrollArea::AdjustIgnored</enum>
-   </property>
-   <property name="rowCount">
-    <number>10</number>
-   </property>
-   <property name="columnCount">
-    <number>4</number>
-   </property>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>135</number>
-   </attribute>
-   <attribute name="verticalHeaderDefaultSectionSize">
-    <number>30</number>
-   </attribute>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <column>
-    <property name="text">
-     <string>New Column</string>
-    </property>
-   </column>
-   <column/>
-   <column/>
-   <column/>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Исходные таблицы</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTableWidget" name="rawTableWidget">
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustIgnored</enum>
+         </property>
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>0</number>
+         </property>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>135</number>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>30</number>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="showSchedule_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Расписание</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="showEmployee_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Работники</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="showJob_btn">
+           <property name="text">
+            <string>Должности</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="showWorkload_btn">
+           <property name="text">
+            <string>Занятость работников</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Отчеты</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="genTableWidget">
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustIgnored</enum>
+         </property>
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>0</number>
+         </property>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>135</number>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>30</number>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="allocationCount_btn">
+           <property name="text">
+            <string>Занятость по ставкам</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
