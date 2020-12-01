@@ -7,15 +7,21 @@ import logging
 class PostgresExecutor:
 
    @overload
-   def __init__(self, connection_conf : str) -> None:
+   def __init__(self, connection_conf : str, reuse_conn : bool = False) -> None:
       '''
-         connection_conf should be str with path to json file with params dict
+         connection_conf : str with path to json file with params dict
+
+         reuse_conn : boolean, indicates whether to keep connection or reconnect
+         on every query. Raises error if couldn't connect at init time.
       ''' 
       pass
 
-   def __init__(self, connection_conf : dict) -> None:
+   def __init__(self, connection_conf : dict, reuse_conn : bool = False) -> None:
       '''
-         connection_conf should be dict with params to postgres connecion
+         connection_conf : dict with params to postgres connecion
+
+         reuse_conn : boolean, indicates whether to keep connection or reconnect
+         on every query. Raises error if couldn't connect at init time.
       ''' 
       if type(connection_conf) == type(""):
          with open(connection_conf) as conf_file:
@@ -27,20 +33,33 @@ class PostgresExecutor:
          raise Exception("Configuration for connection is not set correectly")
       self.conn_cof = connection_conf
 
+      if reuse_conn:
+         self.connection = psycopg2.connect(**self.conn_cof)
+      else:
+         self.connection = None
+      self.reuse_conn = reuse_conn
+
    def execute_query(self, query : str) -> list:
       results = []
       try:
-         with psycopg2.connect(**self.conn_cof) as connection:
-            with connection.cursor() as cursor:
-               cursor.execute(query)
-               try:
-                  results = cursor.fetchall()
-               except:
-                  logging.warning(f"Couldn't fetch results from query '{query[:50]} ... '")
-               connection.commit()
+         if self.reuse_conn is False:
+            self.connection = psycopg2.connect(**self.conn_cof)
+
+         with self.connection.cursor() as cursor:
+            cursor.execute(query)
+            try:
+               results = cursor.fetchall()
+            except:
+               logging.warning(f"Couldn't fetch results from query '{query[:50]} ... '")
+            self.connection.commit()
       except Exception as e:
+         with self.connection.cursor() as cursor:
+            cursor.execute("ROLLBACK")
          logging.error(e)
       finally:
+         if self.reuse_conn is False:  
+            self.connection.close()
+            self.connection = None
          return results
 
    def get_column_names(self, table_name : str) -> list:
