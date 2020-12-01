@@ -2,17 +2,9 @@
     Ensure that paths from load_mocks are available for postgres instance
 '''
 
-import psycopg2
+from db_api.postgres_executor import PostgresExecutor
 
-conn = psycopg2.connect(dbname='university', user='postgres', 
-                        password='password', host='localhost')
-cursor = conn.cursor()
 
+ex = PostgresExecutor("./dev_postgres_conn.conf.json")
 for init_script_name in ["./sql/db_design.sql", "./sql/load_mocks.sql", "./sql/create_constraints.sql"]:
-    script = open(init_script_name).read()
-    print(f"Executing {init_script_name}")
-    cursor.execute(script)
-    conn.commit()
-
-cursor.close()
-conn.close()
+    ex.execute_script_file(init_script_name)
