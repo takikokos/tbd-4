@@ -23,4 +23,8 @@ class SQLTableWidget():
 
         for i, c_name in enumerate(header):
             self.wrapped_table.setHorizontalHeaderItem(i, QTableWidgetItem(c_name))
+
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                self.wrapped_table.setItem(i, j, QTableWidgetItem(str(value)))
         
