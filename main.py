@@ -1,15 +1,32 @@
 from types import FunctionType
+from typing import List
 from PySide2 import QtWidgets
+from PySide2.QtWidgets import QMessageBox
 from ui.mainwindow_ui import MainWindow_UI
 from ui.sql_table import SQLTableWidget
 from db_api.postgres_executor import PostgresExecutor
 import sys
+import logging
 
+
+def show_dialog(text : str, info : str, buttons : list) -> str:
+    msgBox = QMessageBox()
+    msgBox.setText(text)
+    msgBox.setInformativeText(info)
+
+    button = buttons[0]
+    for b in buttons[1:]:
+        button |= b
+
+    msgBox.setStandardButtons(button)
+    return msgBox.exec_()
 
 class MainWindow(QtWidgets.QWidget, MainWindow_UI):
     def __init__(self):
         super().__init__()
         self.sql_executor = PostgresExecutor("./dev_postgres_conn.conf.json", reuse_conn=True)
+        self.deleted_rows_stash = []
+        self.current_table = ""
 
         self.setupUi(self)
         self.rawTableWidget = SQLTableWidget(self.rawTableWidget) # some monkey patching
