@@ -1,3 +1,7 @@
+'''
+    Ensure that paths from load_mocks are available for postgres instance
+'''
+
 import psycopg2
 
 conn = psycopg2.connect(dbname='university', user='postgres', 
@@ -9,6 +13,6 @@ for init_script_name in ["./sql/db_design.sql", "./sql/load_mocks.sql", "./sql/c
     print(f"Executing {init_script_name}")
     cursor.execute(script)
     conn.commit()
-    
+
 cursor.close()
 conn.close()
