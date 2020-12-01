@@ -1,5 +1,7 @@
 ##DEV
 
+mocks have some artifacts and wrong data after generating, so that load_mocks.sql fixes it.
+
 Usefull commands (should be run from root project folder):
 
     - `./venv/lib/python3.8/site-packages/PySide2/Designer` to run qt designer
