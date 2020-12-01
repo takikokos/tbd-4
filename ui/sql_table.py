@@ -1,13 +1,19 @@
-from typing import Any
+from typing import Any, List
+from PySide2.QtCore import QModelIndex
 from PySide2.QtWidgets import QTableWidget, QTableWidgetItem
+from collections import namedtuple
 
+
+SelectedItemInfo = namedtuple("SelectedItemInfo", ["row_index", "column_index", "value"])
 
 class SQLTableWidget():
     '''
         wrapper to add functionality to default QTableWidget
     '''
-    def __init__(self, qtable : QTableWidget):
+
+    def __init__(self, qtable : QTableWidget, id_column_index : int = 0):
         self.wrapped_table = qtable
+        self.id_column_index = id_column_index
 
     def __getattr__(self, name: str) -> Any:
         if name in self.wrapped_table.__dict__:
@@ -27,4 +33,19 @@ class SQLTableWidget():
         for i, row in enumerate(rows):
             for j, value in enumerate(row):
                 self.wrapped_table.setItem(i, j, QTableWidgetItem(str(value)))
+
+    def get_selected_items(self) -> List[SelectedItemInfo]:
+        selected_items = [SelectedItemInfo(x.row(), x.column(), x.data()) for x in self.wrapped_table.selectedIndexes()]
+        return selected_items
+
+    def delete_rows(self, rows_indexes : List[int]):
+        for index in rows_indexes:
+            self.wrapped_table.removeRow(index)
+
+    def get_sqlid(self, row_id : int) -> str:
+        return self.wrapped_table.item(row_id, self.id_column_index).text()
+
+    def get_sqlid_column_name(self) -> str:
+        return self.wrapped_table.horizontalHeaderItem(self.id_column_index).text()
+        
         
