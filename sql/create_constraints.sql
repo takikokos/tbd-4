@@ -18,3 +18,6 @@ REFERENCES public.employee (employee_id)
 ON DELETE CASCADE
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
+ALTER TABLE public.employee ADD CONSTRAINT check_gender_values 
+CHECK (gender IN ('М', 'Ж'));
