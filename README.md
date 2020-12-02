@@ -9,3 +9,4 @@ Usefull commands (should be run from root project folder):
     - `pip install -r requirements.txt` install from requirements.txt
     - `docker run -v `pwd`/mocks:/mocks --name psql -e POSTGRES_PASSWORD=password -e POSTGRES_DB=university -e POSTGRES_USER=postgres -d -p 5432:5432 postgres` run posgresql docker image
     - run init_load_db.py to create all the tables and load mocks into them
+    - run `pyinstaller main.py` to generate executable

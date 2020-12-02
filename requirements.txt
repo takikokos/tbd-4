@@ -1,3 +1,7 @@
+altgraph==0.17
+macholib==1.14
 psycopg2-binary==2.8.6
+pyinstaller==4.1
+pyinstaller-hooks-contrib==2020.10
 PySide2==5.15.2
 shiboken2==5.15.2
