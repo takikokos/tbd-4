@@ -39,13 +39,19 @@ class SQLTableWidget():
         return selected_items
 
     def delete_rows(self, rows_indexes : List[int]):
-        for index in rows_indexes:
-            self.wrapped_table.removeRow(index)
+        for i, index in enumerate(sorted(rows_indexes)):
+            self.wrapped_table.removeRow(index - i)
 
     def get_sqlid(self, row_id : int) -> str:
         return self.wrapped_table.item(row_id, self.id_column_index).text()
 
     def get_sqlid_column_name(self) -> str:
         return self.wrapped_table.horizontalHeaderItem(self.id_column_index).text()
+
+    def get_column_name(self, c_index : int) -> str:
+        return self.wrapped_table.horizontalHeaderItem(c_index).text()
+
+    # def append_row(self) -> None:
+    #     self.wrapped_table.insertRow(0)
         
         
