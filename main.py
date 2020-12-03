@@ -124,7 +124,6 @@ class MainWindow(QtWidgets.QWidget, MainWindow_UI):
             self.commit_delete_stash()
             self._factory_show_all_data_func(self.rawTableWidget, self.current_table)()
             
-
     def _table_item_changed(self):
         item = self.rawTableWidget.get_selected_items()
         if len(item) != 1:
