@@ -1,7 +1,10 @@
 from typing import Any, List
 from PySide2.QtCore import QModelIndex
+from PySide2.QtCore import Qt
 from PySide2.QtWidgets import QTableWidget, QTableWidgetItem
 from collections import namedtuple
+import itertools
+from datetime import date
 
 
 SelectedItemInfo = namedtuple("SelectedItemInfo", ["row_index", "column_index", "value"])
@@ -14,6 +17,7 @@ class SQLTableWidget():
     def __init__(self, qtable : QTableWidget, id_column_index : int = 0):
         self.wrapped_table = qtable
         self.id_column_index = id_column_index
+        self.wrapped_table.horizontalHeader().sectionClicked.connect(self._factory_sort_column_func())
 
     def __getattr__(self, name: str) -> Any:
         if name in self.wrapped_table.__dict__:
@@ -26,13 +30,15 @@ class SQLTableWidget():
     def show_query_resluts(self, header : list, rows : list) -> None:
         self.wrapped_table.setColumnCount(len(header))
         self.wrapped_table.setRowCount(len(rows))
-
+        
         for i, c_name in enumerate(header):
-            self.wrapped_table.setHorizontalHeaderItem(i, QTableWidgetItem(c_name))
+            self.wrapped_table.setHorizontalHeaderItem(i, QTableWidgetItem(c_name))       
 
         for i, row in enumerate(rows):
             for j, value in enumerate(row):
-                self.wrapped_table.setItem(i, j, QTableWidgetItem(str(value)))
+                item = QTableWidgetItem()
+                item.setData(0, value if not isinstance(value, date) else str(value))
+                self.wrapped_table.setItem(i, j, item)
 
     def get_selected_items(self) -> List[SelectedItemInfo]:
         selected_items = [SelectedItemInfo(x.row(), x.column(), x.data()) for x in self.wrapped_table.selectedIndexes()]
@@ -54,5 +60,12 @@ class SQLTableWidget():
     def set_row_values(self, index : int, values : List[Any]) -> None:
         for i, v in enumerate(values):
             self.wrapped_table.setItem(index, i, QTableWidgetItem(str(v)))
+
+    def _factory_sort_column_func(self):
+        column_order_state = itertools.cycle([Qt.AscendingOrder, Qt.DescendingOrder])
+        def sort_func(column_index):
+            self.wrapped_table.sortItems(column_index, next(column_order_state))
+            self.wrapped_table.clearSelection()
+        return sort_func
         
         
