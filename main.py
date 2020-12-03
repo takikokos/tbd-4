@@ -2,7 +2,7 @@ from types import FunctionType
 from typing import Any, Dict, List
 from PySide2 import QtWidgets
 import PySide2
-from PySide2.QtWidgets import QAbstractItemView, QMessageBox, QLabel, QLineEdit, QHBoxLayout
+from PySide2.QtWidgets import QAbstractItemView, QFileDialog, QMessageBox, QLabel, QLineEdit, QHBoxLayout
 from ui.mainwindow_ui import MainWindow_UI
 from ui.creatingrow_ui import CreateRowWindow_UI, Qt
 from ui.sql_table import SQLTableWidget
@@ -59,7 +59,10 @@ class CreateRowWindow(QtWidgets.QWidget, CreateRowWindow_UI):
 class MainWindow(QtWidgets.QWidget, MainWindow_UI):
     def __init__(self):
         super().__init__()
-        self.sql_executor = PostgresExecutor("./dev_postgres_conn.conf.json", reuse_conn=True)
+        show_dialog("Выберете файл", "Выберете путь до json файла с настройками соединеия к базе данных.", [QMessageBox.Ok])
+        conf_path, _ = QFileDialog.getOpenFileName(self, "Выберете файл", "", "*.json")
+        logging.info(f"Configuring connection with '{conf_path}'")
+        self.sql_executor = PostgresExecutor(conf_path, reuse_conn=True)
         self.deleted_rows_stash : List[str] = []
         self.updated_values_stash : Dict[str, Dict[str, Any]] = {}
         self.added_rows_stash : List[List[str]] = []
