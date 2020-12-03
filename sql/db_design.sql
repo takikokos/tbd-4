@@ -2,6 +2,7 @@
 CREATE TABLE public.job (
                 job_id SERIAL NOT NULL,
                 title VARCHAR NOT NULL,
+                department VARCHAR NOT NULL,
                 description VARCHAR NOT NULL,
                 category VARCHAR NOT NULL,
                 CONSTRAINT job_pk PRIMARY KEY (job_id)

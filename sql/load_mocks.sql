@@ -22,11 +22,16 @@ WHERE job_id NOT IN (
                     FROM 
                         (SELECT MIN(job_id) AS job_id, 
                                 title, 
-                                category 
+                                category,
+                                department
                         FROM job
-                        GROUP BY title, category
+                        GROUP BY title, category, department
                         ) AS t1
                     );
+
+-- drop 2/3 of table, i guess it's too big
+DELETE FROM job
+WHERE random() <= 0.66;
 
 SELECT setval(pg_get_serial_sequence('job', 'job_id'), max(job_id)) FROM job;
 
@@ -66,6 +71,14 @@ WHERE job_id NOT IN (SELECT job_id FROM job);
 
 DELETE FROM job_schedule
 WHERE job_schedule_id NOT IN (
+                            SELECT js.job_schedule_id
+                            FROM job_schedule AS js
+                            JOIN job AS j ON j.job_id = js.job_id
+                            WHERE js.department = j.department
+                            );
+
+DELETE FROM job_schedule
+WHERE job_schedule_id NOT IN (
                         SELECT t1.job_schedule_id 
                         FROM 
                             (SELECT MIN(job_schedule_id) AS job_schedule_id,
@@ -76,7 +89,7 @@ WHERE job_schedule_id NOT IN (
                             ) AS t1
                         );
 
-DELETE FROM job_schedule
-WHERE random() <= 0.66;
+-- DELETE FROM job_schedule
+-- WHERE random() <= 0.66;
 
 SELECT setval(pg_get_serial_sequence('job_schedule', 'job_schedule_id'), max(job_schedule_id)) FROM job_schedule;
