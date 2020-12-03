@@ -4,8 +4,8 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="docker-psql" />
    <property key="Connection Type" value="PostgreSQL" />
+   <property key="Logical" value="PlayPen Database" />
    <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/university" />
    <property key="UID" value="postgres" />
    <property key="PWD" value="password" />
@@ -17,7 +17,7 @@
   </data-source>
   <data-source id="DS0">
    <property key="Connection Type" value="PostgreSQL" />
-   <property key="Logical" value="docker-psql" />
+   <property key="Logical" value="PlayPen Database" />
    <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/university" />
    <property key="UID" value="postgres" />
    <property key="PWD" value="password" />
@@ -29,7 +29,7 @@
   </data-source>
  </project-data-sources>
  <source-databases>
-  <database id="DB0" populated="true" UUID="c505df14-15f6-44f1-82b4-d05f3bade19c" dbcs-ref="DS0" name="docker-psql" physicalName="docker-psql" >
+  <database id="DB0" populated="true" UUID="c505df14-15f6-44f1-82b4-d05f3bade19c" dbcs-ref="DS0" name="PlayPen Database" physicalName="docker-psql" >
    <catalog id="CAT1" populated="true" UUID="81e66ae4-db98-4438-a161-62afb34ca692" name="university" nativeTerm="database" physicalName="university" >
     <schema id="SCH2" populated="true" UUID="e3644ef0-f21e-44ab-9c84-797c25ad0dc8" name="" nativeTerm="schema" physicalName="" >
      <table id="TAB3" populated="false" UUID="aafd8028-f096-4b89-8448-6e13ce76c5bd" name="sql_features" objectType="TABLE" physicalName="sql_features" >
@@ -571,10 +571,13 @@
     <column id="COL156" populated="true" UUID="edaca6f4-54cc-4292-b227-98c68566d847" autoIncrement="false" autoIncrementSequenceName="job_title_seq" defaultValue="" name="title" nullable="0" physicalName="title" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL157" populated="true" UUID="758fa794-32dc-43c6-8ae5-3613720f2f85" autoIncrement="false" autoIncrementSequenceName="job_description_seq" defaultValue="" name="description" nullable="0" physicalName="description" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL157" populated="true" UUID="1f4ee652-08e1-4402-9319-40c435dbfda8" autoIncrement="false" autoIncrementSequenceName="job_department_seq" defaultValue="" name="department" nullable="0" physicalName="department" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL158" populated="true" UUID="ce3d86ea-02c0-4f28-88ae-c6f28ba25860" autoIncrement="false" autoIncrementSequenceName="job_category_seq" defaultValue="" name="category" nullable="0" physicalName="category" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL158" populated="true" UUID="758fa794-32dc-43c6-8ae5-3613720f2f85" autoIncrement="false" autoIncrementSequenceName="job_description_seq" defaultValue="" name="description" nullable="0" physicalName="description" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL159" populated="true" UUID="ce3d86ea-02c0-4f28-88ae-c6f28ba25860" autoIncrement="false" autoIncrementSequenceName="job_category_seq" defaultValue="" name="category" nullable="0" physicalName="category" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
@@ -583,96 +586,96 @@
     <folder id="FOLTAB1542" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB1544" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX159" populated="true" UUID="2dbf655f-8048-47d8-ac13-b1857d52ce75" clustered="false" name="job_pk" physicalName="job_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC160" populated="true" UUID="27f5ffc3-64cb-42ef-a1fe-dd14756442f0" ascendingOrDescending="UNSPECIFIED" column-ref="COL155" name="job_id" physicalName="job_id" />
+    <index id="IDX160" populated="true" UUID="2dbf655f-8048-47d8-ac13-b1857d52ce75" clustered="false" name="job_pk" physicalName="job_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC161" populated="true" UUID="27f5ffc3-64cb-42ef-a1fe-dd14756442f0" ascendingOrDescending="UNSPECIFIED" column-ref="COL155" name="job_id" physicalName="job_id" />
     </index>
    </folder>
   </table>
-  <table id="TAB161" populated="true" UUID="333fb1d9-320a-407d-aed8-1e1e05dbb788" name="workload" objectType="TABLE" physicalName="workload" >
+  <table id="TAB162" populated="true" UUID="333fb1d9-320a-407d-aed8-1e1e05dbb788" name="workload" objectType="TABLE" physicalName="workload" >
    <remarks></remarks>
-   <folder id="FOLTAB1611" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL162" populated="true" UUID="5662a950-b8b2-41cd-b8ae-e81a77d2a2e2" autoIncrement="false" autoIncrementSequenceName="workload_workload_id_seq_2" defaultValue="" name="workload_id" nullable="0" physicalName="workload_id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+   <folder id="FOLTAB1621" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL163" populated="true" UUID="5662a950-b8b2-41cd-b8ae-e81a77d2a2e2" autoIncrement="false" autoIncrementSequenceName="workload_workload_id_seq_2" defaultValue="" name="workload_id" nullable="0" physicalName="workload_id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL163" populated="true" UUID="ac69bc5e-df3f-4be8-a06d-4ae15d68d621" autoIncrement="false" autoIncrementSequenceName="workload_allocation_seq" defaultValue="" name="allocation" nullable="0" physicalName="allocation" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL164" populated="true" UUID="ac69bc5e-df3f-4be8-a06d-4ae15d68d621" autoIncrement="false" autoIncrementSequenceName="workload_allocation_seq" defaultValue="" name="allocation" nullable="0" physicalName="allocation" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL164" populated="true" UUID="ba4d7a56-8176-4df5-8785-73db9c245b5f" autoIncrement="false" autoIncrementSequenceName="workload_job_id_seq_2" defaultValue="" name="job_id" nullable="0" physicalName="job_id" precision="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL165" populated="true" UUID="ba4d7a56-8176-4df5-8785-73db9c245b5f" autoIncrement="false" autoIncrementSequenceName="workload_job_id_seq_2" defaultValue="" name="job_id" nullable="0" physicalName="job_id" precision="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL165" populated="true" UUID="3401e2ad-7918-463e-9d4c-d2b58723938a" autoIncrement="false" autoIncrementSequenceName="workload_employee_id_seq_2" defaultValue="" name="employee_id" nullable="0" physicalName="employee_id" precision="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL166" populated="true" UUID="3401e2ad-7918-463e-9d4c-d2b58723938a" autoIncrement="false" autoIncrementSequenceName="workload_employee_id_seq_2" defaultValue="" name="employee_id" nullable="0" physicalName="employee_id" precision="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL166" populated="true" UUID="3dc4c5c7-bb82-4431-a98c-51ff0084e109" autoIncrement="false" autoIncrementSequenceName="workload_start_date_seq" defaultValue="" name="start_date" nullable="0" physicalName="start_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+    <column id="COL167" populated="true" UUID="3dc4c5c7-bb82-4431-a98c-51ff0084e109" autoIncrement="false" autoIncrementSequenceName="workload_start_date_seq" defaultValue="" name="start_date" nullable="0" physicalName="start_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
-    <column id="COL167" populated="true" UUID="22b08a57-ab07-4342-a4e1-7a48789593a5" autoIncrement="false" autoIncrementSequenceName="workload_end_date_seq" defaultValue="" name="end_date" nullable="1" physicalName="end_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+    <column id="COL168" populated="true" UUID="22b08a57-ab07-4342-a4e1-7a48789593a5" autoIncrement="false" autoIncrementSequenceName="workload_end_date_seq" defaultValue="" name="end_date" nullable="1" physicalName="end_date" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
     </folder>
-    <folder id="FOLTAB1613" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    <folder id="FOLTAB1623" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
     </folder>
-    <folder id="FOLTAB1612" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    <folder id="FOLTAB1622" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
-    <folder id="FOLTAB1614" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX168" populated="true" UUID="787686c9-b41a-45a3-a1de-3ea5f4bf8811" clustered="false" name="workload_pk" physicalName="workload_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC169" populated="true" UUID="cc507fd8-16fa-40f1-a758-5c6b6f04ad82" ascendingOrDescending="UNSPECIFIED" column-ref="COL162" name="workload_id" physicalName="workload_id" />
+    <folder id="FOLTAB1624" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX169" populated="true" UUID="787686c9-b41a-45a3-a1de-3ea5f4bf8811" clustered="false" name="workload_pk" physicalName="workload_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC170" populated="true" UUID="cc507fd8-16fa-40f1-a758-5c6b6f04ad82" ascendingOrDescending="UNSPECIFIED" column-ref="COL163" name="workload_id" physicalName="workload_id" />
     </index>
    </folder>
   </table>
-  <table id="TAB170" populated="true" UUID="76e1f7a1-3557-4950-b8fd-27634529c1cc" name="job_schedule" objectType="TABLE" physicalName="job_schedule" >
+  <table id="TAB171" populated="true" UUID="76e1f7a1-3557-4950-b8fd-27634529c1cc" name="job_schedule" objectType="TABLE" physicalName="job_schedule" >
    <remarks></remarks>
-   <folder id="FOLTAB1701" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL171" populated="true" UUID="7239e70d-2b57-40ae-855d-d95a5632733e" autoIncrement="false" autoIncrementSequenceName="job_schedule_id_seq" defaultValue="" name="job_schedule_id" nullable="0" physicalName="job_schedule_id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+   <folder id="FOLTAB1711" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL172" populated="true" UUID="7239e70d-2b57-40ae-855d-d95a5632733e" autoIncrement="false" autoIncrementSequenceName="job_schedule_id_seq" defaultValue="" name="job_schedule_id" nullable="0" physicalName="job_schedule_id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL172" populated="true" UUID="9361999e-3d9f-4b89-86b8-f5393c3ee249" autoIncrement="false" autoIncrementSequenceName="job_schedule_job_id_seq" defaultValue="" name="job_id" nullable="0" physicalName="job_id" precision="0" primaryKeySeq="1" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL173" populated="true" UUID="9361999e-3d9f-4b89-86b8-f5393c3ee249" autoIncrement="false" autoIncrementSequenceName="job_schedule_job_id_seq" defaultValue="" name="job_id" nullable="0" physicalName="job_id" precision="0" primaryKeySeq="1" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL173" populated="true" UUID="91889f8e-6a42-44bf-a844-dbd7ae44ca63" autoIncrement="false" autoIncrementSequenceName="job_schedule_department_seq" defaultValue="" name="department" nullable="0" physicalName="department" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL174" populated="true" UUID="91889f8e-6a42-44bf-a844-dbd7ae44ca63" autoIncrement="false" autoIncrementSequenceName="job_schedule_department_seq" defaultValue="" name="department" nullable="0" physicalName="department" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL174" populated="true" UUID="6678cb00-bd79-4c75-ac50-3251e770c38e" autoIncrement="false" autoIncrementSequenceName="job_schedule_max_job_allocation_seq" defaultValue="" name="max_job_allocation" nullable="0" physicalName="max_job_allocation" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL175" populated="true" UUID="6678cb00-bd79-4c75-ac50-3251e770c38e" autoIncrement="false" autoIncrementSequenceName="job_schedule_max_job_allocation_seq" defaultValue="" name="max_job_allocation" nullable="0" physicalName="max_job_allocation" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL175" populated="true" UUID="bf8b58fa-f719-4fda-afac-a151e405becf" autoIncrement="false" autoIncrementSequenceName="job_schedule_salary_seq" defaultValue="" name="salary" nullable="0" physicalName="salary" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL176" populated="true" UUID="bf8b58fa-f719-4fda-afac-a151e405becf" autoIncrement="false" autoIncrementSequenceName="job_schedule_salary_seq" defaultValue="" name="salary" nullable="0" physicalName="salary" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
     </folder>
-    <folder id="FOLTAB1703" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    <folder id="FOLTAB1713" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
     </folder>
-    <folder id="FOLTAB1702" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    <folder id="FOLTAB1712" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
-    <folder id="FOLTAB1704" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX176" populated="true" UUID="db4002a3-8611-453a-922f-cfbf91b24fe3" clustered="false" name="job_schedule_pk" physicalName="job_schedule_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC177" populated="true" UUID="78c11a52-aac6-489a-a50e-531f2bfc334a" ascendingOrDescending="UNSPECIFIED" column-ref="COL171" name="job_schedule_id" physicalName="job_schedule_id" />
-     <index-column id="IDC178" populated="true" UUID="56461e0c-89ea-4edf-864f-f4d6c2709702" ascendingOrDescending="UNSPECIFIED" column-ref="COL172" name="job_id" physicalName="job_id" />
+    <folder id="FOLTAB1714" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX177" populated="true" UUID="db4002a3-8611-453a-922f-cfbf91b24fe3" clustered="false" name="job_schedule_pk" physicalName="job_schedule_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC178" populated="true" UUID="78c11a52-aac6-489a-a50e-531f2bfc334a" ascendingOrDescending="UNSPECIFIED" column-ref="COL172" name="job_schedule_id" physicalName="job_schedule_id" />
+     <index-column id="IDC179" populated="true" UUID="56461e0c-89ea-4edf-864f-f4d6c2709702" ascendingOrDescending="UNSPECIFIED" column-ref="COL173" name="job_id" physicalName="job_id" />
     </index>
    </folder>
   </table>
   <relationships>
-   <relationship id="REL179" populated="true" UUID="d8d9b732-3ea4-46a1-925a-04d9bb464423" deferrability="7" deleteRule="3" fk-table-ref="TAB161" fkCardinality="7" identifying="false" name="employee_workload_fk" physicalName="employee_workload_fk" pk-table-ref="TAB140" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP180" populated="true" UUID="4eaff489-c799-4140-97dd-60fa6ee3466d" fk-column-ref="COL165" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL141" />
+   <relationship id="REL180" populated="true" UUID="d8d9b732-3ea4-46a1-925a-04d9bb464423" deferrability="7" deleteRule="3" fk-table-ref="TAB162" fkCardinality="7" identifying="false" name="employee_workload_fk" physicalName="employee_workload_fk" pk-table-ref="TAB140" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP181" populated="true" UUID="4eaff489-c799-4140-97dd-60fa6ee3466d" fk-column-ref="COL166" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL141" />
    </relationship>
-   <relationship id="REL181" populated="true" UUID="1bd7c6b6-a6de-4b82-97fd-eab75f26bcba" deferrability="7" deleteRule="3" fk-table-ref="TAB161" fkCardinality="7" identifying="false" name="job_workload_fk" physicalName="job_workload_fk" pk-table-ref="TAB154" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP182" populated="true" UUID="ac64eab1-f7e3-4577-849d-39b2b898f872" fk-column-ref="COL164" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL155" />
+   <relationship id="REL182" populated="true" UUID="1bd7c6b6-a6de-4b82-97fd-eab75f26bcba" deferrability="7" deleteRule="3" fk-table-ref="TAB162" fkCardinality="7" identifying="false" name="job_workload_fk" physicalName="job_workload_fk" pk-table-ref="TAB154" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP183" populated="true" UUID="ac64eab1-f7e3-4577-849d-39b2b898f872" fk-column-ref="COL165" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL155" />
    </relationship>
-   <relationship id="REL183" populated="true" UUID="7387e528-0d8f-4eee-8728-6a5b4ba2fa33" deferrability="7" deleteRule="3" fk-table-ref="TAB170" fkCardinality="7" identifying="false" name="job_job_schedule_fk" physicalName="job_job_schedule_fk" pk-table-ref="TAB154" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP184" populated="true" UUID="ff5f1952-865b-457e-9189-c7911610801c" fk-column-ref="COL172" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL155" />
+   <relationship id="REL184" populated="true" UUID="7387e528-0d8f-4eee-8728-6a5b4ba2fa33" deferrability="7" deleteRule="3" fk-table-ref="TAB171" fkCardinality="7" identifying="false" name="job_job_schedule_fk" physicalName="job_job_schedule_fk" pk-table-ref="TAB154" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP185" populated="true" UUID="ff5f1952-865b-457e-9189-c7911610801c" fk-column-ref="COL173" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL155" />
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="university"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="university"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB140" x="176" y="223" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB154" x="749" y="103" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB161" x="565" y="325" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB170" x="251" y="39" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-link relationship-ref="REL181" pkConnection="0.2579185520361991" fkConnection="0.7335526315789473" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL179" pkConnection="0.47342995169082125" fkConnection="0.5433070866141733" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL183" pkConnection="0.49473684210526314" fkConnection="0.4954954954954955" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-pane table-ref="TAB162" x="565" y="325" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB171" x="251" y="39" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL182" pkConnection="0.2579185520361991" fkConnection="0.7335526315789473" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL180" pkConnection="0.47342995169082125" fkConnection="0.5433070866141733" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL184" pkConnection="0.49473684210526314" fkConnection="0.4954954954954955" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
