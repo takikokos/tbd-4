@@ -37,7 +37,8 @@ class SQLTableWidget():
         for i, row in enumerate(rows):
             for j, value in enumerate(row):
                 item = QTableWidgetItem()
-                item.setData(0, value if not isinstance(value, date) else str(value))
+                item.setData(0, value)
+                if item.text() == "": item.setText(str(value)) # use str representation for unsupported types
                 self.wrapped_table.setItem(i, j, item)
 
     def get_selected_items(self) -> List[SelectedItemInfo]:
