@@ -1,6 +1,6 @@
 
 CREATE TABLE public.job (
-                job_id INTEGER NOT NULL,
+                job_id SERIAL NOT NULL,
                 title VARCHAR NOT NULL,
                 description VARCHAR NOT NULL,
                 category VARCHAR NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE public.job (
 
 
 CREATE TABLE public.job_schedule (
-                job_schedule_id INTEGER NOT NULL,
+                job_schedule_id SERIAL NOT NULL,
                 job_id INTEGER NOT NULL,
                 department VARCHAR NOT NULL,
                 max_job_allocation REAL NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE public.job_schedule (
 
 
 CREATE TABLE public.employee (
-                employee_id INTEGER NOT NULL,
+                employee_id SERIAL NOT NULL,
                 gender VARCHAR NOT NULL,
                 education VARCHAR NOT NULL,
                 family_status VARCHAR NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE public.employee (
 
 
 CREATE TABLE public.workload (
-                workload_id INTEGER NOT NULL,
+                workload_id SERIAL NOT NULL,
                 allocation REAL NOT NULL,
                 job_id INTEGER NOT NULL,
                 employee_id INTEGER NOT NULL,

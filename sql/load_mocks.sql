@@ -8,6 +8,8 @@ FROM '/mocks/MOCK_employee_table.tsv'
 DELIMITER E'\t'
 CSV HEADER;
 
+SELECT setval(pg_get_serial_sequence('employee', 'employee_id'), max(employee_id)) FROM employee;
+
 -- load job table
 COPY job
 FROM '/mocks/MOCK_job_table.tsv'
@@ -25,6 +27,8 @@ WHERE job_id NOT IN (
                         GROUP BY title, category
                         ) AS t1
                     );
+
+SELECT setval(pg_get_serial_sequence('job', 'job_id'), max(job_id)) FROM job;
 
 -- load workload table
 COPY workload
@@ -47,6 +51,8 @@ WHERE workload_id IN (SELECT MAX(workload_id)
 -- drop 2/3 of table, i guess it's too big
 DELETE FROM workload
 WHERE random() <= 0.66;
+
+SELECT setval(pg_get_serial_sequence('workload', 'workload_id'), max(workload_id)) FROM workload;
 
 
 -- load job_schedule table
@@ -72,3 +78,5 @@ WHERE job_schedule_id NOT IN (
 
 DELETE FROM job_schedule
 WHERE random() <= 0.66;
+
+SELECT setval(pg_get_serial_sequence('job_schedule', 'job_schedule_id'), max(job_schedule_id)) FROM job_schedule;
