@@ -2,9 +2,9 @@ from types import FunctionType
 from typing import Any, Dict, List
 from PySide2 import QtWidgets
 import PySide2
-from PySide2.QtWidgets import QMessageBox, QLabel, QLineEdit, QHBoxLayout
+from PySide2.QtWidgets import QAbstractItemView, QMessageBox, QLabel, QLineEdit, QHBoxLayout
 from ui.mainwindow_ui import MainWindow_UI
-from ui.creatingrow_ui import CreateRowWindow_UI, Qt, QMetaObject
+from ui.creatingrow_ui import CreateRowWindow_UI, Qt
 from ui.sql_table import SQLTableWidget
 from db_api.postgres_executor import PostgresExecutor
 import sys
@@ -64,10 +64,18 @@ class MainWindow(QtWidgets.QWidget, MainWindow_UI):
         self.updated_values_stash : Dict[str, Dict[str, Any]] = {}
         self.added_rows_stash : List[List[str]] = []
         self.current_table : str = ""
+        self.hiden_table : str = ""
 
         self.setupUi(self)
         self.rawTableWidget = SQLTableWidget(self.rawTableWidget) # some monkey patching
         self.genTableWidget = SQLTableWidget(self.genTableWidget) # some monkey patching
+        self.genTableWidget.wrapped_table.setEditTriggers(QAbstractItemView.EditTriggers(0))
+
+        self.tabWidget.currentChanged.connect(self._factory_tab_changed())
+
+        self.allocationCount_btn.clicked.connect(self._factory_show_all_data_func(self.genTableWidget, "schedule_report"))
+        self.employeeInfo_btn.clicked.connect(self._factory_show_all_data_func(self.genTableWidget, "employee_report"))
+        self.paidInfo_btn.clicked.connect(self._factory_show_all_data_func(self.genTableWidget, "employee_paid_amount_report"))
 
         self.showEmployee_btn.clicked.connect(self._factory_show_all_data_func(self.rawTableWidget, "employee"))
         self.showJob_btn.clicked.connect(self._factory_show_all_data_func(self.rawTableWidget, "job"))
@@ -97,6 +105,18 @@ class MainWindow(QtWidgets.QWidget, MainWindow_UI):
             logging.info(f"Loaded {len(data)} rows from {input_table_name}")
         
         return result_function
+
+    def _factory_tab_changed(self) -> FunctionType:
+        table_inited = False
+        def result_func():
+            nonlocal table_inited
+            if table_inited:
+                self.current_table, self.hiden_table = self.hiden_table, self.current_table
+            else:
+                self.hiden_table = self.current_table
+                table_inited = True
+            logging.info(f"Tab changed. Current table : {self.current_table}")
+        return result_func
 
     def _delete_rows(self):
         indexes = [x.row_index for x in self.rawTableWidget.get_selected_items()]
