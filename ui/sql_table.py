@@ -51,7 +51,8 @@ class SQLTableWidget():
     def get_column_name(self, c_index : int) -> str:
         return self.wrapped_table.horizontalHeaderItem(c_index).text()
 
-    # def append_row(self) -> None:
-    #     self.wrapped_table.insertRow(0)
+    def set_row_values(self, index : int, values : List[Any]) -> None:
+        for i, v in enumerate(values):
+            self.wrapped_table.setItem(index, i, QTableWidgetItem(str(v)))
         
         
