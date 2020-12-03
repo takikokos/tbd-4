@@ -269,6 +269,20 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="employeeInfo_btn">
+           <property name="text">
+            <string>Информация по сотрудникам</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="paidInfo_btn">
+           <property name="text">
+            <string>История об оплате</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>

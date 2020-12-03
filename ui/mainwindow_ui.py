@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainwindow2.ui'
+## Form generated from reading UI file 'mainwindow.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -152,6 +152,16 @@ class MainWindow_UI(object):
 
         self.horizontalLayout_2.addWidget(self.allocationCount_btn)
 
+        self.employeeInfo_btn = QPushButton(self.tab_2)
+        self.employeeInfo_btn.setObjectName(u"employeeInfo_btn")
+
+        self.horizontalLayout_2.addWidget(self.employeeInfo_btn)
+
+        self.paidInfo_btn = QPushButton(self.tab_2)
+        self.paidInfo_btn.setObjectName(u"paidInfo_btn")
+
+        self.horizontalLayout_2.addWidget(self.paidInfo_btn)
+
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
 
@@ -179,6 +189,8 @@ class MainWindow_UI(object):
         self.showWorkload_btn.setText(QCoreApplication.translate("Form", u"\u0417\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u043e\u0432", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Form", u"\u0418\u0441\u0445\u043e\u0434\u043d\u044b\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b", None))
         self.allocationCount_btn.setText(QCoreApplication.translate("Form", u"\u0417\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c \u043f\u043e \u0441\u0442\u0430\u0432\u043a\u0430\u043c", None))
+        self.employeeInfo_btn.setText(QCoreApplication.translate("Form", u"\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043f\u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u0430\u043c", None))
+        self.paidInfo_btn.setText(QCoreApplication.translate("Form", u"\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u043e\u0431 \u043e\u043f\u043b\u0430\u0442\u0435", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Form", u"\u041e\u0442\u0447\u0435\u0442\u044b", None))
     # retranslateUi
 
