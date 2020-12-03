@@ -57,7 +57,8 @@ class PostgresExecutor:
             try:
                results = cursor.fetchall()
             except:
-               logging.warning(f"Couldn't fetch results from query '{query[:50]} ... '")
+               log__query_str_ = query.replace('\n', ' ')
+               logging.warning(f"Couldn't fetch results from query '{log__query_str_[:50]} ... '")
             self.connection.commit()
       except Exception as e:
          with self.connection.cursor() as cursor:
