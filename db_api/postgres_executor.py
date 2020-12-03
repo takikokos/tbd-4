@@ -1,4 +1,4 @@
-from typing import Any, overload
+from typing import Any, Tuple, overload
 import psycopg2
 import json
 import logging
@@ -45,8 +45,9 @@ class PostgresExecutor:
          self.connection = None
       self.reuse_conn = reuse_conn
 
-   def execute_query(self, query : str) -> list:
+   def execute_query(self, query : str) -> Tuple[list, int]:
       results = []
+      status_code = 0
       try:
          if self.reuse_conn is False:
             self.connection = psycopg2.connect(**self.conn_cof)
@@ -62,14 +63,15 @@ class PostgresExecutor:
          with self.connection.cursor() as cursor:
             cursor.execute("ROLLBACK")
          logging.error(e)
+         status_code = -1
       finally:
          if self.reuse_conn is False:  
             self.connection.close()
             self.connection = None
-         return results
+         return results, status_code
 
    def get_column_names(self, table_name : str) -> list:
-      res = self.execute_query(f"SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{table_name}'")
+      res, _ = self.execute_query(f"SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{table_name}'")
       if len(res) == 0:
          logging.warning(f"get_column_names returned empty list, no such table '{table_name}'")
       res = [x[0] for x in res]
@@ -84,7 +86,7 @@ class PostgresExecutor:
 if __name__ == "__main__":
    print("START")
    ex = PostgresExecutor("./dev_postgres_conn.conf.json")
-   res = ex.execute_query("SELECT * FROM employee LIMIT 10")
+   res, status = ex.execute_query("SELECT * FROM employee LIMIT 10")
    header = ex.get_column_names("employee")
    print(*header)
    print(*res, sep="\n")
