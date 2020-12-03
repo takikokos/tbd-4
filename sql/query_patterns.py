@@ -20,6 +20,12 @@ SELECT *
 FROM {table_name}
 '''
 
+INSERT_QUERY =\
+'''
+INSERT INTO {table_name} {columns_str}
+VALUES {values_str}
+'''
+
 def generate_delete_query(table_name : str, id_column : str, removin_ids : List[str]) -> str:
     '''
         generates query str to delete all the rows from table_name where 
@@ -44,3 +50,12 @@ def generate_update_query(table_name : str, changes : Dict[str, Any], id_column 
                                 updating_fields_str = updating_fields, 
                                 id_column = id_column,
                                 sql_id = sql_id)
+
+def generate_insert_query(table_name : str, columns : List[str], values : List[str]) -> str:
+    '''
+        1st value and 1st column will be ignored (autoincrement id)
+    '''
+    values_fixed = [f"{repr(value) if value != '' else 'null'}" for value in values]
+    values_str = "(" + ", ".join(values_fixed[1:]) + ")"
+    columns_str = "(" + ", ".join(columns[1:]) + ")"
+    return INSERT_QUERY.format(table_name = table_name, values_str = values_str, columns_str = columns_str)
